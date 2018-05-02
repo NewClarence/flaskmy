@@ -67,7 +67,7 @@ def register():
                    'auth/email/confirm', user=user, token=token)
         flash('A confirmation email has been sent to you by email.')
         #flash('注册成功')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('auth.unconfirmed'))
     return render_template('auth/register.html',form=form)
 
 

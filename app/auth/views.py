@@ -39,11 +39,15 @@ def login():
             user=Users.query.filter_by(name=form.name.data).first()
  	    if user is not None and user.check_password(form.password.data):
 		login_user(user)
-		flash('登录成功')
-                return  render_template('auth/success.html',name=form.name.data)
+		next = request.args.get('next')
+                if next is None or not next.startswith('/'):
+                    next = url_for('main.index')
+                return redirect(next)
 	    else:
 		flash('用户或密码错误')
                 return render_template('auth/login.html',form=form)
+
+	return render_template('auth/login.html', form=form)
 
 #用户登出
 @auth.route('/logout')

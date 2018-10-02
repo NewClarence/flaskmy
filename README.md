@@ -16,4 +16,4 @@ SQLALCHEMY_DATABASE_URI = 'mysql://username:password@hostname/database'<br>
 db.create_all()<br>
 Roles.insert_roles()<br>
 # 第四步，启动<br>
-./manage.py runserver -d 0.0.0.0 -d<br>
+./manage.py runserver -h 0.0.0.0 -d<br>
